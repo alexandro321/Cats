@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameController : MonoBehaviour
         canvasGroup.interactable = false;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
+        SceneManager.LoadScene("HelloAR");
     }
 
 }
