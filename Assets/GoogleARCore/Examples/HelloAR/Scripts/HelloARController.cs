@@ -77,6 +77,15 @@ namespace GoogleARCore.Examples.HelloAR
         private bool m_IsQuitting = false;
 
         public bool catIsPlaced = false;
+        // Movement speed in units per second.
+
+        // Time when the movement started.
+        private float startTime;
+
+        // Total distance between the markers.
+        private float journeyLength;
+        public float speed = 2.0f;
+
 
         /// <summary>
         /// The Unity Awake() method.
@@ -85,7 +94,14 @@ namespace GoogleARCore.Examples.HelloAR
         {
             // Enable ARCore to target 60fps camera capture frame rate on supported devices.
             // Note, Application.targetFrameRate is ignored when QualitySettings.vSyncCount != 0.
+
+            
+
             Application.targetFrameRate = 60;
+            //
+            //startTime = Time.time;
+
+
         }
 
         /// <summary>
@@ -93,6 +109,8 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         public void Update()
         {
+
+
             _UpdateApplicationLifecycle();
 
             // If the player has not touched the screen, we are done with this update.
@@ -113,8 +131,12 @@ namespace GoogleARCore.Examples.HelloAR
             TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
                 TrackableHitFlags.FeaturePointWithSurfaceNormal;
 
+
+
             if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
             {
+                // Calculate the journey length.
+                //journeyLength = Vector3.Distance(cat.transform.position, hit.Pose.position);
                 // Use hit pose and camera pose to check if hittest is from the
                 // back of the plane, if it is, no need to create the anchor.
                 if ((hit.Trackable is DetectedPlane) &&
@@ -125,15 +147,33 @@ namespace GoogleARCore.Examples.HelloAR
                 }
                 else 
                 {
+
                     if (catIsPlaced)
                     {
-                        cat.transform.position = hit.Pose.position;
+                        //cat.transform.position = hit.Pose.position;
+
+
+                        //cat.transform.Translate(hit.Pose.position * Time.deltaTime, Space.World);
+
+
+                        // Distance moved equals elapsed time times speed..
+                        //float distCovered = (Time.time - startTime) * speed;
+
+                        // Fraction of journey completed equals current distance divided by total distance.
+                        //float fractionOfJourney = distCovered / journeyLength;
+
+                        //Time.deltaTime* speed
+
+                       cat.transform.position = Vector3.Lerp(cat.transform.position, hit.Pose.position, 1);
+
                         return;
                     }
                     else
                     {
                         // Choose the Andy model for the Trackable that got hit.
                         GameObject prefab;
+                        GameObject prefabBall;
+
                         if (hit.Trackable is FeaturePoint)
                         {
                             prefab = AndyPointPrefab;
@@ -157,7 +197,7 @@ namespace GoogleARCore.Examples.HelloAR
 
                         // Instantiate Andy model at the hit pose.
                         var andyObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation);
-                        cat = andyObject;
+                        
                         // Compensate for the hitPose rotation facing away from the raycast (i.e.
                         // camera).
                         andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
@@ -168,12 +208,18 @@ namespace GoogleARCore.Examples.HelloAR
 
                         // Make Andy model a child of the anchor.
                         andyObject.transform.parent = anchor.transform;
+                        cat = andyObject;
                         catIsPlaced = true;
                     }
                     
                 }
             }
         }
+
+   
+
+
+
 
         /// <summary>
         /// Check and update the application lifecycle.
