@@ -79,12 +79,7 @@ namespace GoogleARCore.Examples.HelloAR
         public bool catIsPlaced = false;
         // Movement speed in units per second.
 
-        // Time when the movement started.
-        private float startTime;
 
-        // Total distance between the markers.
-        private float journeyLength;
-        public float speed = 2.0f;
 
 
         /// <summary>
@@ -150,21 +145,7 @@ namespace GoogleARCore.Examples.HelloAR
 
                     if (catIsPlaced)
                     {
-                        //cat.transform.position = hit.Pose.position;
-
-
-                        //cat.transform.Translate(hit.Pose.position * Time.deltaTime, Space.World);
-
-
-                        // Distance moved equals elapsed time times speed..
-                        //float distCovered = (Time.time - startTime) * speed;
-
-                        // Fraction of journey completed equals current distance divided by total distance.
-                        //float fractionOfJourney = distCovered / journeyLength;
-
-                        //Time.deltaTime* speed
-
-                       cat.transform.position = Vector3.Lerp(cat.transform.position, hit.Pose.position, 1);
+                        
 
                         return;
                     }
