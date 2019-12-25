@@ -1159,11 +1159,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 5054531069693628827, guid: 146e3cf721bc70744acf6a2c4eb178d1, type: 3}
   FirstPersonCamera: {fileID: 896679035}
-  DetectedPlanePrefab: {fileID: 1593692551190204, guid: 7cdb7ffb37f4941c49b28a34ad46e5f5,
-    type: 2}
-  AndyVerticalPlanePrefab: {fileID: 137848, guid: b274f055acd44484e979267107f9a3c4,
+  DetectedPlanePrefab: {fileID: 7666509654925812990, guid: e54babf47b0ea2b489eda3636f859f2c,
     type: 3}
-  AndyHorizontalPlanePrefab: {fileID: 137848, guid: b274f055acd44484e979267107f9a3c4,
+  AndyVerticalPlanePrefab: {fileID: 7666509654925812990, guid: e54babf47b0ea2b489eda3636f859f2c,
+    type: 3}
+  AndyHorizontalPlanePrefab: {fileID: 7666509654925812990, guid: e54babf47b0ea2b489eda3636f859f2c,
     type: 3}
   AndyPointPrefab: {fileID: 1190091649889860, guid: b27e8d7fe70df464188ea5dcf2af0bb3,
     type: 3}
