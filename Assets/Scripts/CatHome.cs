@@ -24,7 +24,6 @@ public class CatHome : MonoBehaviour
         bowlPos.x = -0.01f;
         bowlPos.z = -0.01f;
 
-
     }
 
     // Update is called once per frame

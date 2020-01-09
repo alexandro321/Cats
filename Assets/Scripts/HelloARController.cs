@@ -24,6 +24,7 @@ namespace GoogleARCore.Examples.HelloAR
     using GoogleARCore;
     using GoogleARCore.Examples.Common;
     using UnityEngine;
+    using UnityEngine.UI;
     using UnityEngine.EventSystems;
 
 #if UNITY_EDITOR
@@ -78,6 +79,7 @@ namespace GoogleARCore.Examples.HelloAR
 
         public bool catIsPlaced = false;
         // Movement speed in units per second.
+        public Text catName;
 
 
 
@@ -97,6 +99,11 @@ namespace GoogleARCore.Examples.HelloAR
             //startTime = Time.time;
 
 
+        }
+
+        public void Start()
+        {
+            catName.text = PlayerPrefs.GetString("Cat name");
         }
 
         /// <summary>

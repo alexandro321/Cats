@@ -6,12 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public Text inputName;
+
     
     // Start is called before the first frame update
     void Start()
-    { 
-        
+    {
+        if (PlayerPrefs.HasKey("Cat name"))
+        {
+            StartGame();
+        }
+        else
+        {
+            
+        }
+
     }
+
+
     public void StartGame()
     {
         var canvasGroup = gameObject.GetComponent<CanvasGroup>();
@@ -19,6 +31,13 @@ public class GameController : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
         SceneManager.LoadScene("HelloAR");
+    }
+
+    public void GameAfter()
+    {
+        PlayerPrefs.SetString("Cat name", inputName.text);
+        Debug.Log(PlayerPrefs.GetString("Cat name"));
+        StartGame();
     }
 
 }
