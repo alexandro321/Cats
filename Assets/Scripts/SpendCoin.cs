@@ -16,17 +16,15 @@ public class SpendCoin : MonoBehaviour
     {
 
     }
-
-    // Start is called before the first frame update
     void Start()
     {
         if (PlayerPrefs.HasKey("Coins"))
         {
-            
+            PlayerPrefs.SetInt("Coins", 5000);   //DELETE ON RELEASE
         }
         else
         {
-            PlayerPrefs.SetInt("Coins", 50);    
+            PlayerPrefs.SetInt("Coins", 5000);    //CHANGE TO 50 ON RELEASE
         }
         
         coins = int.Parse(coin.text);
@@ -43,10 +41,10 @@ public class SpendCoin : MonoBehaviour
                 PlayerPrefs.GetInt("RewardedMinute", DateTime.Now.Minute), 
                 PlayerPrefs.GetInt("RewardedSecond", DateTime.Now.Second));
 
-            Debug.Log(RewardedTime);
-            Debug.Log(" ");
-            Debug.Log(DateTime.Now);
-            Debug.Log("Текст " + (RewardedTime <= DateTime.Now));
+            // Debug.Log(RewardedTime);
+            // Debug.Log(" ");
+            // Debug.Log(DateTime.Now);
+            // Debug.Log("Текст " + (RewardedTime <= DateTime.Now));
             if ((DateTime.Now - RewardedTime).TotalHours > 23)
             {
                 Debug.Log(" ");
@@ -74,21 +72,12 @@ public class SpendCoin : MonoBehaviour
         PlayerPrefs.SetInt("RewardedSecond", DateTime.Now.Second);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        coins = PlayerPrefs.GetInt("Coins");
         coin.text = coins.ToString();
-
         PlayerPrefs.SetInt("Coins", coins);
-
-
-
         PlayerPrefs.Save();
     }
 
-    public void Change()
-    {
-        if (coins > 0)
-            coins -= 2;
-    }
 }

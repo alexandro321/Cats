@@ -5,14 +5,23 @@ using UnityEngine;
 public class ShowButtonActions : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float startTime = 0;
+    public float endTime = 0.5f;
     void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if(gameObject.activeSelf == true){
+            startTime += 0.3f * Time.deltaTime;
+            if(startTime >= endTime){
+                gameObject.SetActive(!gameObject.activeSelf);
+                startTime = 0;
+            }
+        }
 
     }
 

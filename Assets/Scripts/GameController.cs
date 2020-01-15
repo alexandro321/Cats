@@ -16,11 +16,6 @@ public class GameController : MonoBehaviour
         {
             StartGame();
         }
-        else
-        {
-            
-        }
-
     }
 
 
@@ -37,7 +32,13 @@ public class GameController : MonoBehaviour
     {
         PlayerPrefs.SetString("Cat name", inputName.text);
         Debug.Log(PlayerPrefs.GetString("Cat name"));
-        StartGame();
+        if(PlayerPrefs.GetString("Cat name") != ""){
+            StartGame();
+        }
+        else{
+            Debug.Log("Empty name");
+        }
+        
     }
 
 }
