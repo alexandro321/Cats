@@ -29,6 +29,7 @@ public class ShowButtonActions : MonoBehaviour
     {
         gameObject.SetActive(!gameObject.activeSelf);
         Debug.Log(gameObject.activeSelf);
+        //startTime = 0;
         
     }
 }

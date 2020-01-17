@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public Text inputName;
+    public GameObject inputField;
 
     
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        inputField.SetActive(false);
         var canvasGroup = gameObject.GetComponent<CanvasGroup>();
         canvasGroup.interactable = false;
         canvasGroup.alpha = 0;
@@ -30,6 +32,7 @@ public class GameController : MonoBehaviour
 
     public void GameAfter()
     {
+        PlayerPrefs.DeleteAll();
         PlayerPrefs.SetString("Cat name", inputName.text);
         Debug.Log(PlayerPrefs.GetString("Cat name"));
         if(PlayerPrefs.GetString("Cat name") != ""){

@@ -39,7 +39,7 @@ namespace GoogleARCore.Examples.HelloAR
     {
         private static GameObject cat;
 
-        public GameObject ball;
+        //public GameObject ball;
         /// <summary>
         /// The first-person camera being used to render the passthrough camera image (i.e. AR
         /// background).
@@ -80,8 +80,10 @@ namespace GoogleARCore.Examples.HelloAR
         public bool catIsPlaced = false;
         // Movement speed in units per second.
         public Text catName;
-
-
+        public DetectedPlane detectedPlane;
+        public List<Vector3> boundaryPolygonPoints;
+        public Vector3 A, B, C, D;
+        public Vector3 metka;
 
 
         /// <summary>
@@ -151,8 +153,7 @@ namespace GoogleARCore.Examples.HelloAR
                 {
 
                     if (catIsPlaced)
-                    {
-                        
+                    {                        
 
                         return;
                     }
@@ -160,7 +161,7 @@ namespace GoogleARCore.Examples.HelloAR
                     {
                         // Choose the Andy model for the Trackable that got hit.
                         GameObject prefab;
-                        GameObject prefabBall;
+                        //GameObject prefabBall;
 
                         if (hit.Trackable is FeaturePoint)
                         {
@@ -168,7 +169,8 @@ namespace GoogleARCore.Examples.HelloAR
                         }
                         else if (hit.Trackable is DetectedPlane)
                         {
-                            DetectedPlane detectedPlane = hit.Trackable as DetectedPlane;
+                            detectedPlane = hit.Trackable as DetectedPlane;
+                            // DetectedPlane detectedPlane = hit.Trackable as DetectedPlane;
                             if (detectedPlane.PlaneType == DetectedPlaneType.Vertical)
                             {
                                 prefab = AndyVerticalPlanePrefab;

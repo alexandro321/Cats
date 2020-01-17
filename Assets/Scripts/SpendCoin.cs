@@ -20,11 +20,11 @@ public class SpendCoin : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("Coins"))
         {
-            PlayerPrefs.SetInt("Coins", 5000);   //DELETE ON RELEASE
+            //PlayerPrefs.SetInt("Coins", 5000);   //DELETE ON RELEASE
         }
         else
         {
-            PlayerPrefs.SetInt("Coins", 5000);    //CHANGE TO 50 ON RELEASE
+            PlayerPrefs.SetInt("Coins", 50);    //CHANGE TO 50 ON RELEASE
         }
         
         coins = int.Parse(coin.text);
@@ -49,7 +49,7 @@ public class SpendCoin : MonoBehaviour
             {
                 Debug.Log(" ");
                 Debug.Log(coins);
-                coins += 3;
+                coins += 25;
                 Debug.Log(coins);
 
                 UpdateDate();
